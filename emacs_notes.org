@@ -1,0 +1,20 @@
+* Emacs notes
+Created date: 2025-05-17 23:09
+
+* Terminal
+
+- There is M-x `shell` command. It is spawning shell where you can use emacs bindings.
+- M-x `term` is asking what shell to spawn. But then you cannot use M-x anymore. You have to `exit` the shell.
+- M-x `eshell` is spawning lightweight shell with emacs binding.
+- There is also `vterm` which is the best. It's like tmux inside emacs.
+  Installation of `vterm`:
+  #+BEGIN_SRC <język>
+(use-package vterm
+  :ensure t)
+  #+END_SRC
+
+* Bufers
+So simple:
+- `C-x <left>`
+- `C-x <right>`
+
