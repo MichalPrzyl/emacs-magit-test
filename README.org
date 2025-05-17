@@ -30,4 +30,12 @@ Org mode is just pure madness... And I love it :D
 (menu-bar-mode -1)    ;; Górne menu (File, Edit itd.)
 (tool-bar-mode -1)    ;; Pasek narzędzi z ikonami
 (scroll-bar-mode -1)  ;; Pionowy pasek przewijania
+
+
+(require 'ansi-color)
+(defun my/colorize-compilation-buffer ()
+  (when (eq major-mode 'compilation-mode)
+    (ansi-color-apply-on-region compilation-filter-start (point))))
+
+(add-hook 'compilation-filter-hook #'my/colorize-compilation-buffer)
 #+END_SRC
