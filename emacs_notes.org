@@ -18,3 +18,5 @@ So simple:
 - `C-x <left>`
 - `C-x <right>`
 
+* Wrapping lines
+Just enter `visual-line-mode` in `M-x`
