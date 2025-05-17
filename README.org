@@ -8,3 +8,13 @@ Line number 3 maybe...
 ** arent thos another header
 Yeah, I think so...
 Org mode is just pure madness... And I love it :D
+
+* my emacs config (pure emacs, not doom)
+```
+(setq make-backup-files nil)
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
+
+(setq auto-save-default nil)
+(setq auto-save-list-file-prefix nil) ;; nawet nie zapisuj listy auto-save
+```
