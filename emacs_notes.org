@@ -20,3 +20,7 @@ So simple:
 
 * Wrapping lines
 Just enter `visual-line-mode` in `M-x`
+
+* Line operations
+Usuwanie całej linii, nawet będąc w jej środku
+C-S-backspace
