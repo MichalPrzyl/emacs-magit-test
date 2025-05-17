@@ -38,4 +38,14 @@ Org mode is just pure madness... And I love it :D
     (ansi-color-apply-on-region compilation-filter-start (point))))
 
 (add-hook 'compilation-filter-hook #'my/colorize-compilation-buffer)
+
+
+(defun mark-thing-at-point (thing)
+  "Zaznacza THING pod kursorem (np. word, sentence, line, sexp)."
+  (let ((bounds (bounds-of-thing-at-point thing)))
+    (when bounds
+      (goto-char (car bounds))
+      (push-mark (cdr bounds) nil t))))
+
+(global-set-key (kbd "C-c w") (lambda () (interactive) (mark-thing-at-point 'word)))
 #+END_SRC
