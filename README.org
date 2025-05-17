@@ -48,4 +48,14 @@ Org mode is just pure madness... And I love it :D
       (push-mark (cdr bounds) nil t))))
 
 (global-set-key (kbd "C-c w") (lambda () (interactive) (mark-thing-at-point 'word)))
+
+; wielkość czcionki na końcu
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 250)
+
+; multiple cursor
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C->"     . mc/mark-next-like-this)
+         ("C-<"     . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)))
 #+END_SRC
