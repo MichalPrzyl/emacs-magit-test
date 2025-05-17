@@ -27,6 +27,11 @@ starting_splash
 echo -e '\n\n'
 
 for file in *; do
+    if [[ -d $file ]]; then
+	echo "Found ${OKGREEN}$file${ENDC}. This is directory. Skipping..."
+	continue
+    fi
+    
     echo "The file is: ${OKGREEN}$file${ENDC}"
     OUTPUT=$(wc $file | awk -F' ' '{print $1}')
     # I can do the same with just flags on 'wc' utility.
