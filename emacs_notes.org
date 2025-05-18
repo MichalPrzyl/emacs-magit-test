@@ -24,3 +24,6 @@ Just enter `visual-line-mode` in `M-x`
 * Line operations
 Usuwanie całej linii, nawet będąc w jej środku
 C-S-backspace
+
+* Dired
+Do `C-x C-q` in dired and you can change dir and files names. To accept press `C-c C-c`
