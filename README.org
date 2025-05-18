@@ -12,6 +12,27 @@ Org mode is just pure madness... And I love it :D
 * my emacs config (pure emacs, not doom)
 
 #+BEGIN_SRC <język>
+;; melpa and package menager (I guess)
+(require 'package)
+
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu"   . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; install use-package if missing
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 (setq make-backup-files nil)
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
@@ -49,8 +70,9 @@ Org mode is just pure madness... And I love it :D
 
 (global-set-key (kbd "C-c w") (lambda () (interactive) (mark-thing-at-point 'word)))
 
+
 ; wielkość czcionki na końcu
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 250)
+;;(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 120)
 
 ; multiple cursor
 (use-package multiple-cursors
@@ -58,4 +80,112 @@ Org mode is just pure madness... And I love it :D
   :bind (("C->"     . mc/mark-next-like-this)
          ("C-<"     . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
+
+;; C-a goes between char 0 and first char in line
+(defun smart-move-beginning-of-line ()
+  "Przełącz między początkiem linii a początkiem tekstu (z pominięciem spacji)."
+  (interactive)
+  (let ((point-was (point)))
+    (back-to-indentation)
+    (when (= point-was (point))
+      (move-beginning-of-line 1))))
+(global-set-key (kbd "C-a") #'smart-move-beginning-of-line)
+
+;; zrobienie tego co robi 'o' i 'O' w vimie
+(defun open-line-below ()
+  "Wstaw nową linię poniżej i przejdź do niej w insert (jak 'o' w Vimie)."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
+(defun open-line-above ()
+  "Wstaw nową linię powyżej i przejdź do niej w insert (jak 'O' w Vimie)."
+  (interactive)
+  (beginning-of-line)
+  (newline-and-indent)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(global-set-key (kbd "C-o") 'open-line-below)
+(global-set-key (kbd "C-S-o") 'open-line-above)
+
+
+;; lsp-mode
+(use-package python-mode
+  :ensure t)
+
+(use-package lsp-mode
+  :ensure t
+  :hook ((python-mode . lsp))
+  :commands lsp
+  :config
+  (setq lsp-enable-xref t))  ;; <- to wymusza użycie LSP dla xref
+
+;;;; wycisz powiadomienia warningow (LSP???)
+;;(setq warning-minimum-level :error)
+;;(setq native-comp-async-report-warnings-errors nil)
+
+;; Ustaw ścieżkę do pyright, jeśli Emacs go nie widzi
+;;(let ((nvm-node-bin "/home/michal/.nvm/versions/node/v22.15.1/bin"))
+;;  (add-to-list 'exec-path nvm-node-bin)
+;;  (setenv "PATH" (concat nvm-node-bin ":" (getenv "PATH"))))
+
+;; VERSION 1 - attempt to implement lsp with pyright
+;;(use-package lsp-mode
+;;  :ensure t
+;;  :hook ((python-mode . lsp))
+;;  :commands lsp
+;;  :config
+;;  (setq lsp-enable-xref t))
+;;
+;;(use-package lsp-pyright
+;;  :ensure t
+;;  :after lsp-mode
+;;  :hook (python-mode . (lambda ()
+;;                         (require 'lsp-pyright)
+;;                         (lsp))))  ;; jeśli chcesz wymusić
+;;
+;;
+;;(use-package lsp-ui
+;;  :ensure t
+;;  :commands lsp-ui-mode
+;;  :hook (lsp-mode . lsp-ui-mode)
+;;  :config
+;;  (setq lsp-ui-doc-enable t
+;;        lsp-ui-doc-position 'at-point
+;;        ;;lsp-ui-sideline-enable t
+;;        lsp-ui-sideline-show-diagnostics t
+;;        lsp-ui-sideline-show-hover t))
+;;
+;;(use-package flycheck
+;;  :ensure t
+;;  :init (global-flycheck-mode))
+;;
+;;(setq lsp-ui-sideline-enable nil)
+;;END OF VERSION 1
+
+;; goto specific char in buffer
+(use-package avy
+  :ensure t
+  :bind
+  (("C-:" . avy-goto-char)
+   ("C-'" . avy-goto-char-2)))
+
+
+;; Vertico: pionowe menu podpowiedzi
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+;; Orderless: zaawansowane dopasowywanie
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless)))
+
+;; Marginalia: opisy przy wynikach (np. typ pliku, tryb bufora)
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode))
 #+END_SRC
