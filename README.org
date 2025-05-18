@@ -188,4 +188,16 @@ Org mode is just pure madness... And I love it :D
 (use-package marginalia
   :ensure t
   :init (marginalia-mode))
+
+
+;; Płynne scrollowanie
+(setq scroll-margin 0
+      scroll-conservatively 100
+      scroll-preserve-screen-position 50
+      auto-window-vscroll nil)
+
+(use-package good-scroll
+  :ensure t
+  :config
+  (good-scroll-mode 1))
 #+END_SRC
