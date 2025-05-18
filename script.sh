@@ -9,9 +9,6 @@ FAIL=$'\033[91m'
 ENDC=$'\033[0m'
 BOLD=$'\033[1m'
 UNDERLINE=$'\033[4m'
-    
-# echo "This is some color: ${OKGREEN}ABC${ENDC}"
-# echo 'another'
 
 starting_splash(){
     cat <<EOF
