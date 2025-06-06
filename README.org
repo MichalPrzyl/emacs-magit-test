@@ -1,13 +1,12 @@
-* Magit test
-Maybe I will even create some notes on magit... who knows.
+* org-mode
+This was originally magit test. But I decided I will keep all my emacs knowledge here.
+** Code blocks
+Basically you want to use =<s= symbol, then press =TAB=. It will create
+#+begin_src 
+#+begin_src 
 
-Another line
-
-Line number 3 maybe...
-
-** arent thos another header
-Yeah, I think so...
-Org mode is just pure madness... And I love it :D
+#+end_src
+#+end_src
 
 * my emacs config (pure emacs, not doom)
 
