@@ -1,3 +1,5 @@
+#+TITLE: My emacs knowlegde
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 * org-mode
 
 This was originally magit test. But I decided I will keep all my emacs knowledge here.
