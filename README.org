@@ -16,6 +16,10 @@ It will create:
 #+end_src
 
 To exec code block use =C-c C-c= on it.
+You can use that even to connect to your server via ssh and just =C-c C-c= any commands you wrote.
+The films that are showing what you can do:
+- https://www.youtube.com/watch?v=0g9BcZvQbXU&list=WL&index=54&t=754s&ab_channel=spudlyo
+- https://www.youtube.com/watch?v=dljNabciEGg&list=WL&index=53&t=1555s&ab_channel=HowardAbrams
 
 * my emacs config (pure emacs, not doom)
 
