@@ -2,10 +2,12 @@
 This was originally magit test. But I decided I will keep all my emacs knowledge here.
 ** Code blocks
 Basically you want to use =<s= symbol, then press =TAB=. It will create
-#+begin_src 
+"#+begin src"
+and
+"#+end_src"
+
 #+begin_src 
 
-#+end_src
 #+end_src
 
 * my emacs config (pure emacs, not doom)
