@@ -1,14 +1,21 @@
 * org-mode
+
 This was originally magit test. But I decided I will keep all my emacs knowledge here.
+
 ** Code blocks
-Basically you want to use =<s= symbol, then press =TAB=. It will create
+
+Basically you want to use =<s= symbol, then press =TAB=. 
 "#+begin src"
 and
 "#+end_src"
 
+It will create:
+
 #+begin_src 
 
 #+end_src
+
+To exec code block use =C-c C-c= on it.
 
 * my emacs config (pure emacs, not doom)
 
