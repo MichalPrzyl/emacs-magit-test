@@ -24,12 +24,12 @@ The films that are showing what you can do:
 - https://www.youtube.com/watch?v=dljNabciEGg&list=WL&index=53&t=1555s&ab_channel=HowardAbrams
 
 * How to make =org-mode= nice-looking
+The perfect way to do that is create folder =themes= in =~/.emacs.d= directory. Then just wget that repo: https://github.com/jonnay/org-beautify-theme and =M-x load-file= it. Then you can just =M-x load-theme= on any =org= files.
 
-Links:
+Another interesting links:
     - git-repo (didn't try this): https://github.com/awth13/org-appear
     - long and specific article: https://sophiebos.io/posts/beautifying-emacs-org-mode/
     - another article about nice looking: https://zzamboni.org/post/beautifying-org-mode-in-emacs/
-    - I belive I was looking for this: https://github.com/jonnay/org-beautify-theme
 
 * my emacs config (pure emacs, not doom)
 
